@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
   const progressFill = document.getElementById('progress-fill');
   const progressText = document.getElementById('progress-text');
-  const btnReset = document.getElementById('btn-reset');
-  const tabBtns = document.querySelectorAll('.tab-btn');
+  const btnResetAll = document.getElementById('btn-reset');
+  const tabsNav = document.querySelector('.tabs-nav');
+  const infoTexts = document.querySelectorAll('.tab-info');
+  const resetSectionBtns = document.querySelectorAll('.btn-reset-section');
 
+  // فلترة الكروت والتوضيحات حسب القسم المختار
   function filterCards(category) {
     cards.forEach(card => {
       if (card.dataset.category === category) {
@@ -13,8 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('hide');
       }
     });
+
+    infoTexts.forEach(info => {
+      if (info.id === `info-${category}`) {
+        info.classList.remove('hide');
+      } else {
+        info.classList.add('hide');
+      }
+    });
   }
 
+  // تحديث شريط الإنجاز وحفظ الحالة
   function updateProgress() {
     let totalMax = 0;
     let totalDone = 0;
@@ -41,12 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
       percentage = Math.max(0, Math.min(100, percentage));
     }
 
-    progressFill.style.width = `${percentage}%`;
-    progressText.textContent = `${percentage}%`;
+    if (progressFill && progressText) {
+      progressFill.style.width = `${percentage}%`;
+      progressText.textContent = `${percentage}%`;
+    }
 
     saveData();
   }
 
+  // تقليل العداد عند الضغط على زر (تم)
   cards.forEach((card) => {
     const btn = card.querySelector('.btn-count');
     const countDisplay = card.querySelector('.count');
@@ -61,16 +76,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
+  // التنقل بين الأقسام (أذكار الصباح والمساء)
+  if (tabsNav) {
+    tabsNav.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const filter = btn.dataset.tab;
       filterCards(filter);
     });
+  }
+
+  // إعادة ضبط قسم معين (صباح أو مساء)
+  resetSectionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const categoryToReset = btn.dataset.resetCategory;
+
+      cards.forEach(card => {
+        if (card.dataset.category === categoryToReset) {
+          card.querySelector('.count').textContent = card.dataset.max;
+        }
+      });
+
+      updateProgress();
+    });
   });
 
+  // حفظ واسترجاع البيانات من الذاكرة المحلية (LocalStorage)
   function saveData() {
     const state = [];
     cards.forEach(card => {
@@ -91,13 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
   }
 
+  // إظهار أذكار الصباح أول ما الصفحة تفتح
   filterCards('morning');
   loadData();
 
-  btnReset.addEventListener('click', () => {
-    cards.forEach(card => {
-      card.querySelector('.count').textContent = card.dataset.max;
+  // زر إعادة الضبط الشامل لكل الأذكار
+  if (btnResetAll) {
+    btnResetAll.addEventListener('click', () => {
+      cards.forEach(card => {
+        card.querySelector('.count').textContent = card.dataset.max;
+      });
+      updateProgress();
     });
-    updateProgress();
-  });
+  }
 });

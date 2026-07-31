@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>أذكاري | حصن المسلم</title>
+  
+  <!-- ربط ملف الـ CSS هنا -->
   <link rel="stylesheet" href="style.css">
+  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,16 +31,30 @@
     <nav class="tabs-nav">
       <button class="tab-btn active" data-tab="morning">أذكار الصباح 🌤️</button>
       <button class="tab-btn" data-tab="evening">أذكار المساء 🌙</button>
-      <button class="tab-btn" data-tab="prayer">أذكار ما بعد الصلاة 🕌</button>
     </nav>
 
+    <div class="category-info">
+      <div id="info-morning" class="tab-info">
+        <p>أذكار الصباح تكون في بداية اليوم، ويفضل قولها من بعد صلاة الفجر إلى شروق الشمس.</p>
+        <button class="btn-reset-section" data-reset-category="morning">إعادة ضبط أذكار الصباح 🔄</button>
+      </div>
+
+      <div id="info-evening" class="tab-info hide">
+        <p>أذكار المساء تكون في آخر النهار، ويبدأ وقتها من بعد صلاة العصر حتى غروب الشمس ودخول الليل.</p>
+        <button class="btn-reset-section" data-reset-category="evening">إعادة ضبط أذكار المساء 🔄</button>
+      </div>
+    </div>
+
+    <!-- كروت الأذكار -->
     <main class="cards-grid">
+      
+      <!-- ================= أذكار الصباح ================= -->
       <div class="card" data-category="morning" data-max="1">
         <h3>آية الكرسي</h3>
         <p class="text">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -46,7 +63,7 @@
         <p class="text">قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -55,7 +72,7 @@
         <p class="text">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، مِنْ شَرِّ مَا خَلَقَ، وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ، وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -64,25 +81,16 @@
         <p class="text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ، مَلِكِ النَّاسِ، إِلَٰهِ النَّاسِ، مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ، الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ، مِنَ الْجِنَّةِ وَالنَّاسِ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
       <div class="card" data-category="morning" data-max="1">
         <h3>أصبحنا وأصبح الملك لله</h3>
-        <p class="text">أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير. رب أسألك خير ما في هذا اليوم وخير ما بعده، وأعوذ بك من شر ما في هذا اليوم وشر ما بعده، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.</p>
+        <p class="text">أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير. ربِّ أسألك خير ما في هذا اليوم وخير ما بعده، وأعوذ بك من شر ما في هذا اليوم وشر ما بعده، ربِّ أعوذ بك من الكسل وسوء الكِبَر، ربِّ أعوذ بك من عذاب في النار وعذاب في القبر.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="morning" data-max="1">
-        <h3>سيد الاستغفار</h3>
-        <p class="text">اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليَّ، وأبوء بذنبي، فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -91,7 +99,16 @@
         <p class="text">اللهم بك أصبحنا، وبك أمسينا، وبك نحيا، وبك نموت، وإليك النشور.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>سيد الاستغفار</h3>
+        <p class="text">اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليَّ، وأبوء بذنبي، فاغفر لي؛ فإنه لا يغفر الذนوب إلا أنت.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -100,7 +117,25 @@
         <p class="text">رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="4">
+        <h3>اللهم إني أصبحت أُشهدك</h3>
+        <p class="text">اللهم إني أصبحت أُشهدك، وأُشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">4</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>اللهم ما أصبح بي من نعمة</h3>
+        <p class="text">اللهم ما أصبح بي من نعمة أو بأحد من خلقك، فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -109,16 +144,79 @@
         <p class="text">حسبي الله لا إله إلا هو، عليه توكلت، وهو رب العرش العظيم.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">7</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="morning" data-max="100">
-        <h3>سبحان الله وبحمده (صباحاً)</h3>
-        <p class="text">سبحان الله وبحمده.</p>
+      <div class="card" data-category="morning" data-max="3">
+        <h3>بسم الله الذي لا يضر مع اسمه شيء</h3>
+        <p class="text">بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء، وهو السميع العليم.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">100</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">3</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>أصبحنا على فطرة الإسلام</h3>
+        <p class="text">أصبحنا على فطرة الإسلام، وعلى كلمة الإخلاص، وعلى دين نبينا محمد ﷺ، وعلى ملة أبينا إبراهيم حنيفًا مسلمًا، وما كان من المشركين.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="3">
+        <h3>سبحان الله وبحمده (عدد خلقه)</h3>
+        <p class="text">سبحان الله وبحمده، عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">3</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="3">
+        <h3>اللهم عافني في بدني</h3>
+        <p class="text">اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت. اللهم إني أعوذ بك من الكفر والفقر، وأعوذ بك من عذاب القبر، لا إله إلا أنت.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">3</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>اللهم إني أسألك العفو والعافية (صباحاً)</h3>
+        <p class="text">اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي، وآمن روعاتي، اللهم احفظني من بين يديَّ ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أُغتال من تحتي.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>يا حي يا قيوم برحمتك أستغيث</h3>
+        <p class="text">يا حي يا قيوم، برحمتك أستغيث، أصلح لي شأني كله، ولا تكلني إلى نفسي طرفة عين.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="1">
+        <h3>اللهم عالم الغيب والشهادة</h3>
+        <p class="text">اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي، ومن شر الشيطان وشِركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="morning" data-max="10">
+        <h3>الصلاة على النبي ﷺ</h3>
+        <p class="text">اللهم صلِّ وسلم وبارك على نبينا محمد ﷺ.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">10</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -127,43 +225,45 @@
         <p class="text">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">100</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="morning" data-max="1">
-        <h3>اللهم إني أسألك العفو والعافية (صباحاً)</h3>
-        <p class="text">اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي.</p>
+      <div class="card" data-category="morning" data-max="100">
+        <h3>سبحان الله وبحمده (صباحاً)</h3>
+        <p class="text">سبحان الله وبحمده.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">100</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="morning" data-max="1">
-        <h3>اللهم ما أصبح بي من نعمة</h3>
-        <p class="text">اللهم ما أصبح بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.</p>
+      <div class="card" data-category="morning" data-max="100">
+        <h3>أستغفر الله وأتوب إليه (صباحاً)</h3>
+        <p class="text">أستغفر الله وأتوب إليه.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">100</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="morning" data-max="3">
-        <h3>أستغفر الله (صباحاً)</h3>
-        <p class="text">أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
 
+      <!-- ================= أذكار المساء ================= -->
       <div class="card" data-category="evening" data-max="1">
         <h3>آية الكرسي</h3>
         <p class="text">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>خواتيم سورة البقرة (آمن الرسول)</h3>
+        <p class="text">آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ۝ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -172,7 +272,7 @@
         <p class="text">قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -181,7 +281,7 @@
         <p class="text">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، مِنْ شَرِّ مَا خَلَقَ، وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ، وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -190,25 +290,16 @@
         <p class="text">قُلْ أَعُوذُ بِرَبِّ النَّاسِ، مَلِكِ النَّاسِ، إِلَٰهِ النَّاسِ، مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ، الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ، مِنَ الْجِنَّةِ وَالنَّاسِ.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
       <div class="card" data-category="evening" data-max="1">
         <h3>أمسينا وأمسى الملك لله</h3>
-        <p class="text">أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير. رب أسألك خير ما في هذه الليلة وخير ما بعدها، وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.</p>
+        <p class="text">أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير. ربِّ أسألك خير ما في هذه الليلة وخير ما بعدها، وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها، ربِّ أعوذ بك من الكسل وسوء الكِبَر، ربِّ أعوذ بك من عذاب في النار وعذاب في القبر.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="evening" data-max="1">
-        <h3>سيد الاستغفار</h3>
-        <p class="text">اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليَّ، وأبوء بذنبي، فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -217,16 +308,52 @@
         <p class="text">اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>سيد الاستغفار</h3>
+        <p class="text">اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليَّ، وأبوء بذنبي، فاغفر لي؛ فإنه لا يغفر الذنوب إلا أنت.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="4">
+        <h3>اللهم إني أمسيت أُشهدك</h3>
+        <p class="text">اللهم إني أمسيت أُشهدك، وأُشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">4</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>اللهم ما أمسى بي من نعمة</h3>
+        <p class="text">اللهم ما أمسى بي من نعمة أو بأحد من خلقك، فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
       <div class="card" data-category="evening" data-max="3">
-        <h3>رضيت بالله ربًا</h3>
-        <p class="text">رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.</p>
+        <h3>اللهم عافني في بدني</h3>
+        <p class="text">اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت. اللهم إني أعوذ بك من الكفر والفقر، وأعوذ بك من عذاب القبر، لا إله إلا أنت.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>يا حي يا قيوم برحمتك أستغيث</h3>
+        <p class="text">يا حي يا قيوم، برحمتك أستغيث، أصلح لي شأني كله، ولا تكلني إلى نفسي طرفة عين.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -235,43 +362,7 @@
         <p class="text">حسبي الله لا إله إلا هو، عليه توكلت، وهو رب العرش العظيم.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">7</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="evening" data-max="100">
-        <h3>سبحان الله وبحمده (مساءً)</h3>
-        <p class="text">سبحان الله وبحمده.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">100</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="evening" data-max="100">
-        <h3>لا إله إلا الله وحده لا شريك له (مساءً)</h3>
-        <p class="text">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">100</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="evening" data-max="1">
-        <h3>اللهم إني أسألك العفو والعافية (مساءً)</h3>
-        <p class="text">اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="evening" data-max="1">
-        <h3>اللهم ما أمسى بي من نعمة</h3>
-        <p class="text">اللهم ما أمسى بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
@@ -280,107 +371,100 @@
         <p class="text">أعوذ بكلمات الله التامات من شر ما خلق.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>اللهم إني أسألك العفو والعافية (مساءً)</h3>
+        <p class="text">اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي، وآمن روعاتي، اللهم احفظني من بين يديَّ ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أُغتال من تحتي.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="evening" data-max="1">
+        <h3>اللهم عالم الغيب والشهادة</h3>
+        <p class="text">اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي، ومن شر الشيطان وشِركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.</p>
+        <div class="counter-box">
+          <span>المتبقي: <strong class="count">1</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
       <div class="card" data-category="evening" data-max="3">
-        <h3>أستغفر الله (مساءً)</h3>
-        <p class="text">أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه.</p>
+        <h3>بسم الله الذي لا يضر مع اسمه شيء</h3>
+        <p class="text">بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء، وهو السميع العليم.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="3">
-        <h3>الاستغفار بعد الصلاة</h3>
-        <p class="text">أستغفر الله.</p>
+      <div class="card" data-category="evening" data-max="3">
+        <h3>رضيت بالله ربًا</h3>
+        <p class="text">رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.</p>
         <div class="counter-box">
           <span>المتبقي: <strong class="count">3</strong></span>
-          <button class="btn-count">تكرار</button>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="1">
-        <h3>اللهم أنت السلام</h3>
-        <p class="text">اللهم أنت السلام، ومنك السلام، تباركت يا ذا الجلال والإكرام.</p>
+      <div class="card" data-category="evening" data-max="3">
+        <h3>سبحان الله وبحمده (عدد خلقه)</h3>
+        <p class="text">سبحان الله وبحمده، عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">3</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="1">
-        <h3>آية الكرسي (بعد الصلاة)</h3>
-        <p class="text">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.</p>
+      <div class="card" data-category="evening" data-max="10">
+        <h3>الصلاة على النبي ﷺ</h3>
+        <p class="text">اللهم صلِّ وسلم وبارك على نبينا محمد ﷺ.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">10</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="33">
-        <h3>التسبيح (سبحان الله)</h3>
-        <p class="text">سُبْحَانَ اللَّهِ</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">33</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="prayer" data-max="33">
-        <h3>التحميد (الحمد لله)</h3>
-        <p class="text">الْحَمْدُ لِلَّهِ</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">33</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="prayer" data-max="33">
-        <h3>التكبير (الله أكبر)</h3>
-        <p class="text">اللَّهُ أَكْبَرُ</p>
-        <div class="counter-box">
-          <span>المتبقي: <strong class="count">33</strong></span>
-          <button class="btn-count">تكرار</button>
-        </div>
-      </div>
-
-      <div class="card" data-category="prayer" data-max="1">
-        <h3>تمام المائة</h3>
+      <div class="card" data-category="evening" data-max="100">
+        <h3>لا إله إلا الله وحده لا شريك له (مساءً)</h3>
         <p class="text">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">100</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="1">
-        <h3>التهليل بعد الصلاة</h3>
-        <p class="text">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير. اللهم لا مانع لما أعطيت، ولا معطي لما منعت، ولا ينفع ذا الجد منك الجد.</p>
+      <div class="card" data-category="evening" data-max="100">
+        <h3>سبحان الله وبحمده (مساءً)</h3>
+        <p class="text">سبحان الله وبحمده.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">100</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
-      <div class="card" data-category="prayer" data-max="1">
-        <h3>المعوذات (بعد الصلاة)</h3>
-        <p class="text">سورة الإخلاص، وسورة الفلق، وسورة الناس (تُقرأ 3 مرات بعد الفجر والمغرب).</p>
+      <div class="card" data-category="evening" data-max="100">
+        <h3>أستغفر الله وأتوب إليه (مساءً)</h3>
+        <p class="text">أستغفر الله وأتوب إليه.</p>
         <div class="counter-box">
-          <span>المتبقي: <strong class="count">1</strong></span>
-          <button class="btn-count">تكرار</button>
+          <span>المتبقي: <strong class="count">100</strong></span>
+          <button class="btn-count">تم</button>
         </div>
       </div>
 
     </main>
 
+    <!-- زر إعادة الضبط الشامل -->
     <div class="reset-box">
-      <button id="btn-reset">إعادة ضبط الأذكار لليوم</button>
+      <button id="btn-reset">إعادة ضبط جميع الأذكار</button>
     </div>
   </div>
 
+  <!-- ربط ملف الـ JavaScript هنا -->
   <script src="script.js"></script>
 </body>
 </html>

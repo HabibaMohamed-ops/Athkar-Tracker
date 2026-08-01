@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const infoTexts = document.querySelectorAll('.tab-info');
   const resetSectionBtns = document.querySelectorAll('.btn-reset-section');
 
-  // فلترة الكروت والتوضيحات حسب القسم المختار
   function filterCards(category) {
     cards.forEach(card => {
       if (card.dataset.category === category) {
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // تحديث شريط الإنجاز وحفظ الحالة
   function updateProgress() {
     let totalMax = 0;
     let totalDone = 0;
@@ -61,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     saveData();
   }
 
-  // تقليل العداد عند الضغط على زر (تم)
   cards.forEach((card) => {
     const btn = card.querySelector('.btn-count');
     const countDisplay = card.querySelector('.count');
@@ -76,7 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // التنقل بين الأقسام (أذكار الصباح والمساء)
+  // إعادة ضبط ذكر فردي عند الضغط على زر الإعادة الخاص به
+  cards.forEach((card) => {
+    const resetCardBtn = card.querySelector('.btn-reset-card');
+    if (resetCardBtn) {
+      resetCardBtn.addEventListener('click', () => {
+        const countDisplay = card.querySelector('.count');
+        const max = card.dataset.max;
+        countDisplay.textContent = max;
+        updateProgress();
+      });
+    }
+  });
+
   if (tabsNav) {
     tabsNav.addEventListener('click', (e) => {
       const btn = e.target.closest('.tab-btn');
@@ -90,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // إعادة ضبط قسم معين (صباح أو مساء)
   resetSectionBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const categoryToReset = btn.dataset.resetCategory;
@@ -105,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // حفظ واسترجاع البيانات من الذاكرة المحلية (LocalStorage)
   function saveData() {
     const state = [];
     cards.forEach(card => {
@@ -126,11 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
   }
 
-  // إظهار أذكار الصباح أول ما الصفحة تفتح
   filterCards('morning');
   loadData();
 
-  // زر إعادة الضبط الشامل لكل الأذكار
   if (btnResetAll) {
     btnResetAll.addEventListener('click', () => {
       cards.forEach(card => {

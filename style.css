@@ -199,6 +199,7 @@ header p {
   align-items: center;
   padding-top: 10px;
   border-top: 1px solid #eee;
+  gap: 5px;
 }
 
 .counter-box span {
@@ -211,20 +212,30 @@ header p {
   font-size: 1.1rem;
 }
 
-.btn-count {
+.btn-count,
+.btn-reset-card {
   background-color: #2e7d32;
   color: #fff;
   border: none;
-  padding: 8px 18px;
+  padding: 8px 12px;
   border-radius: 6px;
   font-family: 'Tajawal', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.btn-count:hover {
+.btn-count:hover,
+.btn-reset-card:hover {
   background-color: #1b5e20;
+}
+
+.btn-reset-card {
+  background-color: #558b2f;
+}
+
+.btn-reset-card:hover {
+  background-color: #33691e;
 }
 
 .btn-count:disabled {

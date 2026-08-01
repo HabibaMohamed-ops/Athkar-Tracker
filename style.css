@@ -18,8 +18,21 @@ body {
 }
 
 header {
-  text-align: center;
-  margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    text-align: right;
+}
+
+header .logo {
+    width: 65px !important;
+    height: 65px !important;
+    max-width: 65px !important;
+    max-height: 65px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
 }
 
 header h1 {

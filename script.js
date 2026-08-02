@@ -1,147 +1,152 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
-  const progressFill = document.getElementById('progress-fill');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabInfos = document.querySelectorAll('.tab-info');
   const progressText = document.getElementById('progress-text');
-  const btnResetAll = document.getElementById('btn-reset');
-  const tabsNav = document.querySelector('.tabs-nav');
-  const infoTexts = document.querySelectorAll('.tab-info');
+  const progressFill = document.getElementById('progress-fill');
+  const resetAllBtn = document.getElementById('btn-reset');
   const resetSectionBtns = document.querySelectorAll('.btn-reset-section');
 
-  function filterCards(category) {
-    cards.forEach(card => {
-      if (card.dataset.category === category) {
-        card.classList.remove('hide');
-      } else {
-        card.classList.add('hide');
-      }
-    });
+  // تحميل البيانات المخزنة مسبقاً أو إنشاء كائن جديد
+  let savedData = JSON.parse(localStorage.getItem('athkarProgress')) || {};
 
-    infoTexts.forEach(info => {
-      if (info.id === `info-${category}`) {
-        info.classList.remove('hide');
-      } else {
-        info.classList.add('hide');
-      }
-    });
-  }
+  // تهيئة الحالة الأولية للبطاقات بناءً على الـ localStorage
+  cards.forEach(card => {
+    const cardId = card.getAttribute('data-id');
+    const maxCount = parseInt(card.getAttribute('data-max'));
+    const countEl = card.querySelector('.count');
 
-  function updateProgress() {
-    let totalMax = 0;
-    let totalDone = 0;
-
-    cards.forEach(card => {
-      const max = parseInt(card.dataset.max) || 0;
-      const current = parseInt(card.querySelector('.count').textContent) || 0;
-      
-      totalMax += max;
-      totalDone += (max - current);
-
-      if (current === 0) {
+    // إذا كان هناك عداد مخزّن لهذا الـ id مسبقاً
+    if (savedData[cardId] !== undefined) {
+      countEl.textContent = savedData[cardId];
+      if (savedData[cardId] === 0) {
         card.classList.add('completed');
-        card.querySelector('.btn-count').disabled = true;
-      } else {
-        card.classList.remove('completed');
-        card.querySelector('.btn-count').disabled = false;
       }
-    });
-
-    let percentage = 0;
-    if (totalMax > 0) {
-      percentage = Math.round((totalDone / totalMax) * 100);
-      percentage = Math.max(0, Math.min(100, percentage));
+    } else {
+      // لو مش مخزّن، نبدأ بالقيمة القصوى (الافتراضية)
+      savedData[cardId] = maxCount;
+      countEl.textContent = maxCount;
     }
+  });
 
-    if (progressFill && progressText) {
-      progressFill.style.width = `${percentage}%`;
-      progressText.textContent = `${percentage}%`;
-    }
+  updateTotalProgress();
 
-    saveData();
-  }
-
-  cards.forEach((card) => {
-    const btn = card.querySelector('.btn-count');
-    const countDisplay = card.querySelector('.count');
-
+  // تفعيل أزرار التبويبات (Tabs)
+  tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      let current = parseInt(countDisplay.textContent);
-      if (current > 0) {
-        current--;
-        countDisplay.textContent = current;
-        updateProgress();
-      }
-    });
-  });
-
-  // إعادة ضبط ذكر فردي عند الضغط على زر الإعادة الخاص به
-  cards.forEach((card) => {
-    const resetCardBtn = card.querySelector('.btn-reset-card');
-    if (resetCardBtn) {
-      resetCardBtn.addEventListener('click', () => {
-        const countDisplay = card.querySelector('.count');
-        const max = card.dataset.max;
-        countDisplay.textContent = max;
-        updateProgress();
-      });
-    }
-  });
-
-  if (tabsNav) {
-    tabsNav.addEventListener('click', (e) => {
-      const btn = e.target.closest('.tab-btn');
-      if (!btn) return;
-
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      tabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.dataset.tab;
-      filterCards(filter);
-    });
-  }
+      const targetTab = btn.getAttribute('data-tab');
 
-  resetSectionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const categoryToReset = btn.dataset.resetCategory;
+      tabInfos.forEach(info => {
+        info.classList.add('hide');
+      });
+      document.getElementById(`info-${targetTab}`).classList.remove('hide');
 
       cards.forEach(card => {
-        if (card.dataset.category === categoryToReset) {
-          card.querySelector('.count').textContent = card.dataset.max;
+        if (card.getAttribute('data-category') === targetTab) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
       });
-
-      updateProgress();
     });
   });
 
-  function saveData() {
-    const state = [];
-    cards.forEach(card => {
-      state.push(card.querySelector('.count').textContent);
-    });
-    localStorage.setItem('athkar_progress', JSON.stringify(state));
-  }
+  // عرض تبويب الصباح افتراضياً وإخفاء الباقي
+  tabBtns[0].click();
 
-  function loadData() {
-    const savedState = JSON.parse(localStorage.getItem('athkar_progress'));
-    if (savedState) {
-      cards.forEach((card, index) => {
-        if (savedState[index] !== undefined) {
-          card.querySelector('.count').textContent = savedState[index];
+  // زر "تم" لإنقاص العداد
+  cards.forEach(card => {
+    const btnCount = card.querySelector('.btn-count');
+    const btnResetCard = card.querySelector('.btn-reset-card');
+    const countEl = card.querySelector('.count');
+    const cardId = card.getAttribute('data-id');
+    const maxCount = parseInt(card.getAttribute('data-max'));
+
+    btnCount.addEventListener('click', () => {
+      let currentCount = parseInt(countEl.textContent);
+      if (currentCount > 0) {
+        currentCount--;
+        countEl.textContent = currentCount;
+        savedData[cardId] = currentCount;
+
+        if (currentCount === 0) {
+          card.classList.add('completed');
+        }
+
+        saveAndRefresh();
+      }
+    });
+
+    // زر إعادة تعيين بطاقة واحدة
+    btnResetCard.addEventListener('click', () => {
+      currentCount = maxCount;
+      countEl.textContent = maxCount;
+      savedData[cardId] = maxCount;
+      card.classList.remove('completed');
+      saveAndRefresh();
+    });
+  });
+
+  // إعادة ضبط قسم كامل (أذكار الصباح مثلاً)
+  resetSectionBtns.forEach(resetBtn => {
+    resetBtn.addEventListener('click', () => {
+      const category = resetBtn.getAttribute('data-reset-category');
+      cards.forEach(card => {
+        if (card.getAttribute('data-category') === category) {
+          const cardId = card.getAttribute('data-id');
+          const maxCount = parseInt(card.getAttribute('data-max'));
+          const countEl = card.querySelector('.count');
+
+          countEl.textContent = maxCount;
+          savedData[cardId] = maxCount;
+          card.classList.remove('completed');
         }
       });
+      saveAndRefresh();
+    });
+  });
+
+  // زر إعادة ضبط كل الأذكار
+  resetAllBtn.addEventListener('click', () => {
+    if (confirm('هل أنت متأكد من إعادة ضبط جميع الأذكار؟')) {
+      cards.forEach(card => {
+        const cardId = card.getAttribute('data-id');
+        const maxCount = parseInt(card.getAttribute('data-max'));
+        const countEl = card.querySelector('.count');
+
+        countEl.textContent = maxCount;
+        savedData[cardId] = maxCount;
+        card.classList.remove('completed');
+      });
+      saveAndRefresh();
     }
-    updateProgress();
+  });
+
+  // حفظ البيانات في الـ LocalStorage وتحديث نسبة الإنجاز
+  function saveAndRefresh() {
+    localStorage.setItem('athkarProgress', JSON.stringify(savedData));
+    updateTotalProgress();
   }
 
-  filterCards('morning');
-  loadData();
+  // حساب وتحديث نسبة الإنجاز الكلية
+  function updateTotalProgress() {
+    let totalCards = cards.length;
+    let completedCards = 0;
 
-  if (btnResetAll) {
-    btnResetAll.addEventListener('click', () => {
-      cards.forEach(card => {
-        card.querySelector('.count').textContent = card.dataset.max;
-      });
-      updateProgress();
+    cards.forEach(card => {
+      const cardId = card.getAttribute('data-id');
+      const maxCount = parseInt(card.getAttribute('data-max'));
+      // إذا وصل العداد إلى 0 يعني تمت قراءة الذكر بالكامل
+      if (savedData[cardId] === 0) {
+        completedCards++;
+      }
     });
+
+    let percentage = totalCards > 0 ? Math.round((completedCards / totalCards) * 100) : 0;
+    progressText.textContent = `${percentage}%`;
+    progressFill.style.width = `${percentage}%`;
   }
 });
